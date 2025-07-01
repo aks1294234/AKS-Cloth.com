@@ -1,4 +1,4 @@
-07.01 12:25 am
+07.01 7:48 am
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -202,13 +202,13 @@
       const div = document.createElement('div');
       div.className = 'product-container';
       div.innerHTML = `
-        <div class="product-number-display">Picture ${i}</div>
+        <div class="product-number-display">${i}</div>
         <img src="${i}.jpg" alt="Picture ${i}" class="product-image">
         <button class="details-button" onclick="toggleDetails('d${i}')">Details</button>
         <div class="details-section" id="d${i}">
           <p>Product: ${fullProductName}</p>
           <p>Price: Rs 1800</p>
-          <a href="#" class="contact-button" onclick="sendWhatsAppMessage('${fullProductName}')">
+          <a href="#" class="contact-button" onclick="sendWhatsAppMessage('${fullProductName}', ${i})">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="whatsapp-icon" alt="WhatsApp Icon">
             Contact on WhatsApp
           </a>
@@ -222,9 +222,9 @@
       section.style.display = section.style.display === "block" ? "none" : "block";
     }
 
-    function sendWhatsAppMessage(productName) {
+    function sendWhatsAppMessage(productName, pictureNumber) {
       const phoneNumber = "923010692773"; // Your WhatsApp number
-      const message = `I am interested in ${productName}. Please provide more details.`;
+      const message = `I am interested in ${productName} (Picture ${pictureNumber}). Please provide more details.`;
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
     }
